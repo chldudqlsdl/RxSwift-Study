@@ -1,9 +1,9 @@
 //
-//  Model.swift
+//  MenuItem.swift
 //  RxSwift+MVVM
 //
-//  Created by iamchiwon on 07/08/2019.
-//  Copyright © 2019 iamchiwon. All rights reserved.
+//  Created by Youngbin Choi on 5/1/24.
+//  Copyright © 2024 iamchiwon. All rights reserved.
 //
 
 import Foundation

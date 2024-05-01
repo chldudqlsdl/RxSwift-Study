@@ -13,11 +13,12 @@
 		A168F0A722F7FB2E00A9E178 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A168F0A622F7FB2E00A9E178 /* Assets.xcassets */; };
 		A168F0AA22F7FB2E00A9E178 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A168F0A822F7FB2E00A9E178 /* LaunchScreen.storyboard */; };
 		A168F0B622FADE5B00A9E178 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A168F0B522FADE5B00A9E178 /* APIService.swift */; };
-		A168F0B822FADE7000A9E178 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A168F0B722FADE7000A9E178 /* Model.swift */; };
 		A168F0BA22FAF3CC00A9E178 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A168F0B922FAF3CC00A9E178 /* Utils.swift */; };
 		A168F0BC22FAF9B800A9E178 /* MenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A168F0BB22FAF9B800A9E178 /* MenuItemTableViewCell.swift */; };
 		A168F0BE22FAFAC300A9E178 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A168F0BD22FAFAC300A9E178 /* OrderViewController.swift */; };
 		D9E365BF2BE2622E002C34A5 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E365BE2BE2622E002C34A5 /* Menu.swift */; };
+		D9E365C32BE262F3002C34A5 /* MenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E365C22BE262F3002C34A5 /* MenuItem.swift */; };
+		D9E365C72BE26364002C34A5 /* MenuListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9E365C62BE26364002C34A5 /* MenuListViewModel.swift */; };
 		E2AFEEC81F02AC78E0249DDC /* Pods_RxSwift_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3442FB936BB096840300742 /* Pods_RxSwift_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,13 +32,14 @@
 		A168F0A922F7FB2E00A9E178 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A168F0AB22F7FB2E00A9E178 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A168F0B522FADE5B00A9E178 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		A168F0B722FADE7000A9E178 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A168F0B922FAF3CC00A9E178 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A168F0BB22FAF9B800A9E178 /* MenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItemTableViewCell.swift; sourceTree = "<group>"; };
 		A168F0BD22FAFAC300A9E178 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		C566DF4A5E7D8CFD17BE3140 /* Pods-RxSwift+MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwift+MVVM.release.xcconfig"; path = "Target Support Files/Pods-RxSwift+MVVM/Pods-RxSwift+MVVM.release.xcconfig"; sourceTree = "<group>"; };
 		D3442FB936BB096840300742 /* Pods_RxSwift_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxSwift_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E365BE2BE2622E002C34A5 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		D9E365C22BE262F3002C34A5 /* MenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItem.swift; sourceTree = "<group>"; };
+		D9E365C62BE26364002C34A5 /* MenuListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,14 +83,12 @@
 		A168F09E22F7FB2C00A9E178 /* RxSwift+MVVM */ = {
 			isa = PBXGroup;
 			children = (
-				D9E365BD2BE26225002C34A5 /* Model */,
 				A168F09F22F7FB2C00A9E178 /* AppDelegate.swift */,
-				A168F0B922FAF3CC00A9E178 /* Utils.swift */,
-				A168F0BB22FAF9B800A9E178 /* MenuItemTableViewCell.swift */,
-				A168F0A122F7FB2C00A9E178 /* MenuViewController.swift */,
-				A168F0BD22FAFAC300A9E178 /* OrderViewController.swift */,
-				A168F0B522FADE5B00A9E178 /* APIService.swift */,
-				A168F0B722FADE7000A9E178 /* Model.swift */,
+				D9E365C02BE262B2002C34A5 /* Utils */,
+				D9E365C42BE26309002C34A5 /* Network */,
+				D9E365BD2BE26225002C34A5 /* Model */,
+				D9E365C12BE262D2002C34A5 /* View */,
+				D9E365C52BE2634D002C34A5 /* ViewModel */,
 				A168F0A322F7FB2C00A9E178 /* Main.storyboard */,
 				A168F0A622F7FB2E00A9E178 /* Assets.xcassets */,
 				A168F0A822F7FB2E00A9E178 /* LaunchScreen.storyboard */,
@@ -101,8 +101,43 @@
 			isa = PBXGroup;
 			children = (
 				D9E365BE2BE2622E002C34A5 /* Menu.swift */,
+				D9E365C22BE262F3002C34A5 /* MenuItem.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D9E365C02BE262B2002C34A5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A168F0B922FAF3CC00A9E178 /* Utils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		D9E365C12BE262D2002C34A5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A168F0BB22FAF9B800A9E178 /* MenuItemTableViewCell.swift */,
+				A168F0A122F7FB2C00A9E178 /* MenuViewController.swift */,
+				A168F0BD22FAFAC300A9E178 /* OrderViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D9E365C42BE26309002C34A5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A168F0B522FADE5B00A9E178 /* APIService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D9E365C52BE2634D002C34A5 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D9E365C62BE26364002C34A5 /* MenuListViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		F63CBA0E98C6B4783BFB659C /* Pods */ = {
@@ -235,8 +270,9 @@
 				A168F0B622FADE5B00A9E178 /* APIService.swift in Sources */,
 				A168F0BE22FAFAC300A9E178 /* OrderViewController.swift in Sources */,
 				A168F0BC22FAF9B800A9E178 /* MenuItemTableViewCell.swift in Sources */,
+				D9E365C32BE262F3002C34A5 /* MenuItem.swift in Sources */,
 				A168F0A022F7FB2C00A9E178 /* AppDelegate.swift in Sources */,
-				A168F0B822FADE7000A9E178 /* Model.swift in Sources */,
+				D9E365C72BE26364002C34A5 /* MenuListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

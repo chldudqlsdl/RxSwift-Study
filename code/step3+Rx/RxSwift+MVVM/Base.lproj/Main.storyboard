@@ -163,9 +163,6 @@
                                             </tableViewCell>
                                         </prototypes>
                                         <sections/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="Lf0-4s-Xwe"/>
-                                        </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdl-xe-4UQ">
                                         <rect key="frame" x="0.0" y="643.5" width="414" height="122.5"/>
