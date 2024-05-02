@@ -26,23 +26,29 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel.menuObeservable
+        viewModel.menuObservable
             .bind(to: tableView.rx.items(cellIdentifier: cellIdentifier, cellType: MenuItemTableViewCell.self)) { index, item, cell in
                 
                 cell.title.text = item.name
                 cell.price.text = "\(item.price)"
                 cell.count.text = "\(item.count)"
+                
+                cell.onChange = { [weak self] value in
+                    self?.viewModel.changeCount(item: item, value: value)
+                }
 
             }
         
         viewModel.totalPrice
             .map({$0.currencyKR()})
+            .observeOn(MainScheduler.asyncInstance)
             .bind(to: totalPrice.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.itemCount
             .map({String($0)})
-            .subscribe(onNext: { self.itemCountLabel.text = $0 })
+            .observeOn(MainScheduler.asyncInstance)
+            .bind(to: itemCountLabel.rx.text)
             .disposed(by: disposeBag)
     }
 
@@ -74,13 +80,14 @@ class MenuViewController: UIViewController {
     
     @IBAction func onOrder(_ sender: Any) {
 //        performSegue(withIdentifier: "OrderViewController", sender: nil)
-        viewModel.menuObeservable.onNext([
-            Menu(name: "고구마튀김", price: 500, count: Int.random(in: 1...5)),
-            Menu(name: "야채튀김", price: 500, count: Int.random(in: 1...5)),
-            Menu(name: "오징어튀김", price: 500, count: Int.random(in: 1...5)),
-            Menu(name: "감자튀김", price: 500, count: Int.random(in: 1...5)),
-            Menu(name: "새우튀김", price: 500, count: Int.random(in: 1...5)),
-        ])
+//        viewModel.menuObservable.onNext([
+//            Menu(name: "고구마튀김", price: 500, count: Int.random(in: 1...5)),
+//            Menu(name: "야채튀김", price: 500, count: Int.random(in: 1...5)),
+//            Menu(name: "오징어튀김", price: 500, count: Int.random(in: 1...5)),
+//            Menu(name: "감자튀김", price: 500, count: Int.random(in: 1...5)),
+//            Menu(name: "새우튀김", price: 500, count: Int.random(in: 1...5)),
+//        ])
+        viewModel.onOrder()
     }
 }
 
@@ -101,6 +108,9 @@ class MenuViewController: UIViewController {
 //        return cell
 //    }
 //}
+
+
+
 
 
 

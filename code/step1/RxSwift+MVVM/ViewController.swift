@@ -33,6 +33,30 @@ class ViewController: UIViewController {
     }
 
     // MARK: SYNC
+    
+    func downloadJson(_ url: String) -> Observable<String?> {
+        
+        Observable.create { emitter in
+            let url = URL(string: MEMBER_LIST_URL)!
+            let task = URLSession.shared.dataTask(with: url) { data, response, err in
+                guard err == nil else {
+                    emitter.onError(err!)
+                    return
+                }
+                if let data = data {
+                    let json = String(data: data, encoding: .utf8)
+                    emitter.onNext(json)
+                }
+                // 위에 리턴이 없으니 얘는 무조건 불림
+//                emitter.onCompleted()
+            }
+            task.resume()
+            
+            return Disposables.create {
+                task.cancel()
+            }
+        }
+    }
 
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
 
@@ -40,11 +64,21 @@ class ViewController: UIViewController {
         editView.text = ""
         setVisibleWithAnimation(activityIndicator, true)
 
-        let url = URL(string: MEMBER_LIST_URL)!
-        let data = try! Data(contentsOf: url)
-        let json = String(data: data, encoding: .utf8)
-        self.editView.text = json
-        
-        self.setVisibleWithAnimation(self.activityIndicator, false)
+        let observable: Observable<String?> = downloadJson(MEMBER_LIST_URL)
+
+        let disposable = observable
+            .debug()
+            .subscribe { event in
+            switch event {
+            case .next(let json):
+                DispatchQueue.main.async {
+                    self.editView.text = json
+                    self.setVisibleWithAnimation(self.activityIndicator, false)
+                }
+            case .error(let err):
+                print(err.localizedDescription)
+            case .completed: break
+            }
+        }
     }
 }
